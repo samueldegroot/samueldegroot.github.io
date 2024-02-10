@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Graphics Engine</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://kit.fontawesome.com/9577e791fb.js" crossorigin="anonymous"></script>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html" class="active">Home</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2>C++ Graphics Engine</h2>
+									<p>Github repo: https://github.com/samueldegroot/GraphicsEngine</p>
+								</header>
+								<ul class="features">
+									<li>
+										<img src="images/wireframe_cube.gif" style="width:280px;height:240px;">
+										<h3>Wireframe of triangles</h3>
+										<p>At this point, the engine's only capability is defining a mesh as a list of triangles. I draw the mesh by multiplying each triangle by a projection matrix to translate the 3D mesh onto the 2D screen.
+										I calculate the normal of each triangle to determine if it should be drawn, preventing a transparent effect. The "camera" is stationary, so I rotate and translate the cube to make viewing easier. </p>
+									</li>
+									<li>
+										<img src="images/shaded_cube.gif" style="width:280px;height:240px;">
+										<h3>Dynamic shading</h3>
+										<p>Instead of the wireframe, I'm filling the space between the triangles now. By defining a point near the camera as a fake light source, 
+											I can calculate the dot product between the light and the triangles normal to determine how much light it should receive. In my engine, this just means setting a lighter or darker shade for the entire surface.</p>
+									</li>
+								</ul>
+								<ul class="features">>
+									<li>
+										<img src="images/peter_griffin_unsorted.gif" style="width:280px;height:240px;">
+										<h3>Model Loader</h3>
+										<p>Instead of defining a preset mesh of triangles in code, I now can import .obj files and draw them as a set of triangles.<br>
+											Obviously, the first model I loaded was Peter Griffin from Family Guy.
+											The importer is primitive, and can only work with files that have been triangulated (each face has exactly 3 vertices).
+											The triangles are also drawn in whatever order the model defines them, so triangles can be visible when they shouldn't be, since my engine has no concept of depth yet.
+										</p>
+									</li>
+									<li>
+										<img src="images/peter_griffin.gif" style="width:280px;height:240px;">
+										<h3>Painter's Algorithm</h3>
+										<p>To solve the issue of depth for now, I sort each triangle by distance to the camera after performing all the matrix math. After I draw them in descending order of distance, so the closest triangles are drawn last.
+											I learned this method is called Painter's algorithm. The distance to the camera is uses the midpoint of the triangle so its just an approximation, but it seems to work well enough for now.
+										</p>
+									</li>
+								</ul>
+								<h3>Next steps will be adding a controllable camera so I can draw more complex environments, and handling related issues like clipping.</h3>
+								<!-- <footer class="major">
+									<ul class="actions special">
+										<li><a href="generic.html" class="button">See More</a></li>
+									</ul>
+								</footer> -->
+							</section>
+
+						
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>Contact Info</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>10712 S Kestrel Rise Rd<br>South Jordan, UT 84009<br>USA</dd>
+								<dt>Phone</dt>
+								<dd>(512) 749-8485</dd>
+								<dt>Email</dt>
+								<dd><a href="mailto:degrootsamuel@gmail.com">degrootsamuel@gmail.com</a></dd>
+							</dl>
+							</ul>
+						</section>
+						<section>
+							<ul class="icons">
+								<li><a href="https://www.linkedin.com/in/sam-degroot/" class="fa-brands fa-linkedin fa-2xl alt"><span class="label"></span></a></li>
+								<li><a href="https://github.com/samueldegroot" class="fa-brands fa-github fa-2xl alt"><span class="label"></span></a></li>
+								<li><a href="https://samdegroot.itch.io/" class="fa fa-gamepad fa-2xl alt"><span class="label"></span></a></li>
+							<ul class="actions">
+
+							</ul>
+						</section>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
